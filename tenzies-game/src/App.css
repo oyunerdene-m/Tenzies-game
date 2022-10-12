@@ -69,7 +69,6 @@ main {
 
 .roll-dice:focus {
   outline: none;
-  background-color: #0B2434;
 }
 
 .roll-dice:active {
