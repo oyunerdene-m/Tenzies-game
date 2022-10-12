@@ -12,7 +12,6 @@ function App() {
 		const isWin = dice.every((die) => firstDie === die.value && die.isHeld);
 		if (isWin) setTenzies(true);
 	}, [dice]);
-	console.log(tenzies);
 
 	function createNewDice() {
 		const diceArr = [];
@@ -76,7 +75,7 @@ function App() {
 			</p>
 			<div className="dice-container">{diceList}</div>
 			<button className="roll-dice" onClick={rollDice}>
-				Roll
+				{tenzies ? 'New Game' : 'Roll'}
 			</button>
 		</main>
 	);
