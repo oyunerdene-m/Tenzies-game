@@ -38,9 +38,17 @@ function App() {
 		);
 	}
 
-	// function rollDice() {
-	// 	setDice();
-	// }
+	function rollDice() {
+		setDice((oldDice) =>
+			oldDice.map((die) => {
+				if (die.isHeld) {
+					return die;
+				} else {
+					return createNewDie();
+				}
+			}),
+		);
+	}
 
 	const diceList = dice.map((die) => (
 		<Die
@@ -59,7 +67,9 @@ function App() {
 				rolls.
 			</p>
 			<div className="dice-container">{diceList}</div>
-			<button className="roll-dice">Roll</button>
+			<button className="roll-dice" onClick={rollDice}>
+				Roll
+			</button>
 		</main>
 	);
 }
