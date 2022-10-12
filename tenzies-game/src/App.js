@@ -20,7 +20,18 @@ function App() {
 	}
 
 	function handleClick(id) {
-		console.log(id);
+		setDice((oldDice) =>
+			oldDice.map((die) => {
+				if (die.id === id) {
+					return {
+						...die,
+						isHeld: !die.isHeld,
+					};
+				} else {
+					return die;
+				}
+			}),
+		);
 	}
 
 	const diceList = dice.map((die) => (
