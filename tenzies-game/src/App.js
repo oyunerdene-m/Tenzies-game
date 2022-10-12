@@ -47,15 +47,20 @@ function App() {
 	}
 
 	function rollDice() {
-		setDice((oldDice) =>
-			oldDice.map((die) => {
-				if (die.isHeld) {
-					return die;
-				} else {
-					return createNewDie();
-				}
-			}),
-		);
+		if (!tenzies) {
+			setDice((oldDice) =>
+				oldDice.map((die) => {
+					if (die.isHeld) {
+						return die;
+					} else {
+						return createNewDie();
+					}
+				}),
+			);
+		} else {
+			setTenzies(false);
+			setDice(createNewDice());
+		}
 	}
 
 	const diceList = dice.map((die) => (
