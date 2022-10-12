@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Die from './Die';
 import { nanoid } from 'nanoid';
 import './App.css';
 
 function App() {
 	const [dice, setDice] = useState(createNewDice());
+	const [tenzies, setTenzies] = useState(false);
+
+	useEffect(() => {
+		const firstDie = dice[0].value;
+		const isWin = dice.every((die) => firstDie === die.value && die.isHeld);
+		if (isWin) setTenzies(true);
+	}, [dice]);
+	console.log(tenzies);
 
 	function createNewDice() {
 		const diceArr = [];
