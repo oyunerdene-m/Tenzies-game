@@ -19,7 +19,18 @@ function App() {
 		return diceArr;
 	}
 
-	const diceList = dice.map((die) => <Die key={die.id} value={die.value} isHeld={die.isHeld} />);
+	function handleClick(id) {
+		console.log(id);
+	}
+
+	const diceList = dice.map((die) => (
+		<Die
+			key={die.id}
+			value={die.value}
+			isHeld={die.isHeld}
+			handleClick={() => handleClick(die.id)}
+		/>
+	));
 
 	return (
 		<main style={{ margin: '0 auto' }}>
