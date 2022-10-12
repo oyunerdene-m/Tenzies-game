@@ -9,14 +9,18 @@ function App() {
 	function createNewDice() {
 		const diceArr = [];
 		for (let i = 0; i < 10; i++) {
-			const newDie = {
-				id: nanoid(),
-				value: Math.ceil(Math.random() * 6),
-				isHeld: false,
-			};
+			const newDie = createNewDie();
 			diceArr.push(newDie);
 		}
 		return diceArr;
+	}
+
+	function createNewDie() {
+		return {
+			id: nanoid(),
+			value: Math.ceil(Math.random() * 6),
+			isHeld: false,
+		};
 	}
 
 	function handleClick(id) {
@@ -33,6 +37,10 @@ function App() {
 			}),
 		);
 	}
+
+	// function rollDice() {
+	// 	setDice();
+	// }
 
 	const diceList = dice.map((die) => (
 		<Die
